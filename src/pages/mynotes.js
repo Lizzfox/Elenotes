@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 const Notes = () => {
   useEffect(() => {
-    document.title = 'Fucking notes';
+    document.title = 'Elenotes';
   });
 
   return (

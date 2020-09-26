@@ -6,11 +6,11 @@ const Favorites = () => {
   });
 
   return (
-    <div>
-      <h1>Favorite Notes</h1>
-      <p>These are fucking favorites</p>
-    </div>
-  );
+		<div>
+			<h1>Favorite Notes</h1>
+			<p>These are favorites</p>
+		</div>
+	);
 };
 
 export default Favorites;

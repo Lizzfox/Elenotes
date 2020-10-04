@@ -3,7 +3,7 @@ import { useMutation, gql } from '@apollo/client';
 import { Redirect } from 'react-router-dom';
 
 import NoteForm from '../components/noteform';
-import { GET_NOTES } from '../gql/query';
+import { GET_NOTES, GET_MY_NOTES } from '../gql/query';
 
 const NEW_NOTE = gql`
 	mutation newNote($content: String!) {
@@ -29,12 +29,16 @@ const NewNote = props => {
 		document.title = 'New Note - Elenotes';
 	});
 
-	const [data, { loading, error }] = useMutation(NEW_NOTE, {
-		refetchQueries: [{ query: GET_NOTES }],
-		onCompleted: data => {
-			props.history.push(`note/${data.newNote.id}`);
+	const [data, { loading, error }] = useMutation(
+		NEW_NOTE,
+		{
+			refetchQueries: [{ query: GET_NOTES }, { query: GET_MY_NOTES }],
+			onCompleted: data => {
+				props.history.push(`note/${data.newNote.id}`);
+			}
 		}
-	});
+	);
+
 	return (
 		<React.Fragment>
 			{loading && <p>Loading...</p>}
